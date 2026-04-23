@@ -50,49 +50,56 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const author = await getUser(post.userId);
 
   return (
-    <div>
+    <div className="space-y-4">
       <Link
         href="/blog"
-        className="text-blue-600 hover:underline text-sm mb-6 inline-block"
+        className="inline-block rounded-md px-2 py-1 text-sm text-cyan-200 hover:bg-cyan-300/10 hover:text-cyan-100"
       >
-        ← Quay lai danh sach
+        {"<-"} Quay lai danh sach
       </Link>
 
-      <article>
-        <h1 className="text-3xl font-bold mb-4 capitalize">{post.title}</h1>
+      <article className="surface-panel p-6 md:p-8">
+        <h1 className="mb-4 text-3xl font-bold capitalize text-slate-100">
+          {post.title}
+        </h1>
 
-        <div className="flex items-center gap-3 mb-6 text-sm text-gray-500">
+        <div className="mb-6 flex flex-wrap items-center gap-3 text-sm text-slate-300/85">
           <span>
-            Tac gia: <strong className="text-gray-700">{author.name}</strong>
+            Tac gia: <strong className="text-cyan-100">{author.name}</strong>
           </span>
           <span>•</span>
           <span>{author.email}</span>
         </div>
 
-        <div className="prose max-w-none text-gray-700 whitespace-pre-line mb-8 leading-relaxed">
+        <div className="whitespace-pre-line mb-8 max-w-none leading-relaxed text-slate-200/90">
           {post.body}
         </div>
 
-        <div className="border-t pt-6">
-          <h3 className="font-semibold mb-2">Ve tac gia</h3>
-          <p className="text-gray-600 text-sm">
+        <div className="rounded-xl border border-fuchsia-300/25 bg-slate-950/55 p-4">
+          <h3 className="mb-2 font-semibold text-fuchsia-200">Ve tac gia</h3>
+          <p className="text-sm text-slate-300/85">
             <strong>{author.name}</strong> (@{author.username}) —{" "}
             {author.company.name}
           </p>
-          <p className="text-gray-500 text-sm">{author.company.catchPhrase}</p>
+          <p className="text-sm text-slate-400">{author.company.catchPhrase}</p>
         </div>
 
-        <div className="border-t pt-6 mt-8">
-          <h3 className="font-semibold mb-4">Binh luan ({comments.length})</h3>
+        <div className="mt-8 border-t border-cyan-300/15 pt-6">
+          <h3 className="mb-4 font-semibold text-cyan-100">
+            Binh luan ({comments.length})
+          </h3>
           <div className="space-y-3">
             {comments.slice(0, 5).map((comment) => (
-              <Card key={comment.id}>
+              <Card
+                key={comment.id}
+                className="border-cyan-300/20 bg-slate-950/50"
+              >
                 <CardContent className="pt-4">
-                  <p className="text-sm font-medium text-gray-800">
+                  <p className="text-sm font-medium text-slate-100">
                     {comment.name}
                   </p>
-                  <p className="text-xs text-gray-500 mb-2">{comment.email}</p>
-                  <p className="text-sm text-gray-700">{comment.body}</p>
+                  <p className="mb-2 text-xs text-slate-400">{comment.email}</p>
+                  <p className="text-sm text-slate-300/85">{comment.body}</p>
                 </CardContent>
               </Card>
             ))}

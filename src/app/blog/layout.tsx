@@ -4,21 +4,27 @@ export default function BlogLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="max-w-5xl mx-auto px-4 py-12">
-      <div className="flex gap-8">
-        {/* Nội dung chính */}
-        <div className="flex-1">{children}</div>
-        {/* Sidebar */}
-        <aside className="w-64 shrink-0">
-          <div className="bg-gray-50 rounded-lg p-4">
-            <h3 className="font-semibold mb-3">Danh mục</h3>
-            <ul className="space-y-2 text-sm text-gray-600">
-              <li className="hover:text-blue-600 cursor-pointer">Công nghệ</li>
-              <li className="hover:text-blue-600 cursor-pointer">Học tập</li>
-              <li className="hover:text-blue-600 cursor-pointer">
-                Dự án cá nhân
+    <div className="mx-auto w-full max-w-6xl">
+      <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_260px]">
+        <div className="min-w-0">{children}</div>
+        <aside className="hidden lg:block">
+          <div className="surface-panel sticky top-24 p-4">
+            <h3 className="mb-3 text-sm font-semibold tracking-wide text-cyan-200">
+              Danh muc
+            </h3>
+            <ul className="space-y-2 text-sm text-slate-300/85">
+              <li className="cursor-pointer rounded-md px-2 py-1 hover:bg-fuchsia-400/10 hover:text-fuchsia-100">
+                Cong nghe
               </li>
-              <li className="hover:text-blue-600 cursor-pointer">Cuộc sống</li>
+              <li className="cursor-pointer rounded-md px-2 py-1 hover:bg-fuchsia-400/10 hover:text-fuchsia-100">
+                Hoc tap
+              </li>
+              <li className="cursor-pointer rounded-md px-2 py-1 hover:bg-fuchsia-400/10 hover:text-fuchsia-100">
+                Du an ca nhan
+              </li>
+              <li className="cursor-pointer rounded-md px-2 py-1 hover:bg-fuchsia-400/10 hover:text-fuchsia-100">
+                Cuoc song
+              </li>
             </ul>
           </div>
         </aside>

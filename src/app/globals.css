@@ -140,6 +140,17 @@
   html {
     @apply font-sans;
   }
+
+  h1,
+  h2,
+  h3 {
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
 }
 
 @layer components {
@@ -174,5 +185,14 @@
       linear-gradient(oklch(0.7 0.08 248 / 0.08) 1px, transparent 1px),
       linear-gradient(90deg, oklch(0.7 0.08 248 / 0.08) 1px, transparent 1px);
     background-size: 28px 28px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

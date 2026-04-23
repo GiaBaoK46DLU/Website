@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 
 const navItems = [
   { href: "/", label: "Trang chủ" },
@@ -15,6 +16,10 @@ const navItems = [
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+
+  const isActive = (href: string) =>
+    href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
     <nav className="sticky top-0 z-40 mb-4">
@@ -41,7 +46,11 @@ export default function Navbar() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="rounded-md px-3 py-2 text-sm text-slate-200/90 transition-all hover:bg-fuchsia-400/10 hover:text-cyan-200"
+                className={`rounded-md px-3 py-2 text-sm transition-all ${
+                  isActive(item.href)
+                    ? "bg-cyan-300/15 text-cyan-100 shadow-[0_0_18px_-10px_rgba(34,211,238,0.9)]"
+                    : "text-slate-200/90 hover:bg-fuchsia-400/10 hover:text-cyan-200"
+                }`}
               >
                 {item.label}
               </Link>
@@ -55,7 +64,11 @@ export default function Navbar() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="rounded-md px-3 py-2 text-sm text-slate-200 hover:bg-fuchsia-400/10"
+                className={`rounded-md px-3 py-2 text-sm ${
+                  isActive(item.href)
+                    ? "bg-cyan-300/15 text-cyan-100"
+                    : "text-slate-200 hover:bg-fuchsia-400/10"
+                }`}
                 onClick={() => setOpen(false)}
               >
                 {item.label}
