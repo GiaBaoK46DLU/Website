@@ -1,38 +1,57 @@
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import Reveal from "@/components/ui/reveal";
 
 export default function AboutPage() {
   return (
-    <div className="max-w-5xl mx-auto px-4 py-12">
-      <div className="flex items-center gap-4 mb-6">
-        <Avatar size="lg">
-          <AvatarFallback>GB</AvatarFallback>
-        </Avatar>
-        <div>
-          <h1 className="text-3xl font-bold">Giới thiệu</h1>
-          <p className="text-gray-500">Sinh viên CNTT - Dai hoc Da Lat</p>
-        </div>
-      </div>
-      <div className="space-y-4 text-gray-700">
-        <p>
-          Xin chào! Tôi là <strong>Đinh Lâm Gia Bảo</strong>, sinh viên năm 4
-          ngành Công nghệ Thông tin tại Đại học Đà Lạt.
-        </p>
-        <h2 className="text-2xl font-semibold mt-8 mb-4">Kỹ năng</h2>
-        <ul className="list-disc list-inside space-y-2">
-          <li>JavaScript / TypeScript</li>
-          <li>React & Next.JS</li>
-          <li>Tailwind CSS</li>
-          <li>Git & GitHub</li>
-          <li>SQL & PostgreSQL</li>
-        </ul>
-        <h2 className="text-2xl font-semibold mt-8 mb-4">Học vấn</h2>
-        <div className="bg-gray-50 rounded-lg p-4">
-          <p className="font-medium">Đại học Đà Lạt</p>
-          <p className="text-gray-500">
-            Cử nhân Công nghệ Thông tin (2022-2026)
+    <div className="mx-auto flex w-full max-w-6xl flex-col gap-6">
+      <Reveal>
+        <section className="surface-panel p-6 md:p-8">
+          <div className="flex items-center gap-4">
+            <Avatar size="lg" className="ring-2 ring-cyan-300/50">
+              <AvatarFallback>GB</AvatarFallback>
+            </Avatar>
+            <div>
+              <h1 className="text-3xl font-bold text-slate-100">Gioi thieu</h1>
+              <p className="text-sm text-cyan-200/85">
+                Sinh vien CNTT - Dai hoc Da Lat
+              </p>
+            </div>
+          </div>
+
+          <p className="mt-6 max-w-3xl leading-relaxed text-slate-300/90">
+            Xin chao! Toi la{" "}
+            <strong className="text-fuchsia-200">Dinh Lam Gia Bao</strong>, sinh
+            vien nam 4 nganh Cong nghe Thong tin. Toi tap trung vao frontend
+            engineering, animation UI va cai thien UX de website vua dep vua de
+            su dung.
           </p>
-        </div>
-      </div>
+        </section>
+      </Reveal>
+
+      <Reveal delay={0.1}>
+        <section className="grid gap-4 md:grid-cols-2">
+          <article className="surface-panel p-6">
+            <h2 className="text-xl font-semibold text-slate-100">Tech Stack</h2>
+            <ul className="mt-4 space-y-2 text-sm text-slate-300/90">
+              <li>JavaScript / TypeScript</li>
+              <li>React / Next.js</li>
+              <li>Tailwind CSS / UI systems</li>
+              <li>Git / GitHub / CI workflow</li>
+              <li>SQL / PostgreSQL</li>
+            </ul>
+          </article>
+
+          <article className="surface-panel p-6">
+            <h2 className="text-xl font-semibold text-slate-100">Hoc van</h2>
+            <div className="mt-4 rounded-lg border border-fuchsia-300/25 bg-slate-950/50 p-4">
+              <p className="font-medium text-slate-100">Dai hoc Da Lat</p>
+              <p className="mt-1 text-sm text-slate-300/80">
+                Cu nhan Cong nghe Thong tin (2022-2026)
+              </p>
+            </div>
+          </article>
+        </section>
+      </Reveal>
     </div>
   );
 }

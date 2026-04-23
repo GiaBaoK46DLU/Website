@@ -8,6 +8,7 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import SubmitButton from "@/components/submit-button";
 import { Button } from "@/components/ui/button";
+import Reveal from "@/components/ui/reveal";
 
 const initialState: ContactFormState = {
   success: false,
@@ -29,7 +30,7 @@ function ContactForm({
   return (
     <form action={formAction} className="space-y-4">
       <div>
-        <Label htmlFor="name" className="mb-1">
+        <Label htmlFor="name" className="mb-1 text-slate-200">
           Ho va ten
         </Label>
         <Input
@@ -45,7 +46,7 @@ function ContactForm({
       </div>
 
       <div>
-        <Label htmlFor="email" className="mb-1">
+        <Label htmlFor="email" className="mb-1 text-slate-200">
           Email
         </Label>
         <Input
@@ -61,7 +62,7 @@ function ContactForm({
       </div>
 
       <div>
-        <Label htmlFor="subject" className="mb-1">
+        <Label htmlFor="subject" className="mb-1 text-slate-200">
           Tieu de
         </Label>
         <Input
@@ -77,7 +78,7 @@ function ContactForm({
       </div>
 
       <div>
-        <Label htmlFor="message" className="mb-1">
+        <Label htmlFor="message" className="mb-1 text-slate-200">
           Noi dung
         </Label>
         <Textarea
@@ -106,54 +107,63 @@ export default function ContactPage() {
   const [formKey, setFormKey] = useState(0);
 
   return (
-    <div className="max-w-3xl mx-auto px-4 py-12">
-      <h1 className="text-3xl font-bold mb-2">Liên hệ</h1>
-      <p className="text-gray-500 mb-8">
-        Bạn có câu hỏi hoặc muốn hợp tác? Hãy gửi tin nhắn cho tôi!
-      </p>
+    <div className="mx-auto w-full max-w-6xl">
+      <Reveal>
+        <div className="surface-panel mb-6 p-6 md:p-8">
+          <h1 className="text-3xl font-bold text-slate-100 md:text-4xl">
+            Contact <span className="neon-title">Channel</span>
+          </h1>
+          <p className="mt-2 text-slate-300/80">
+            Ban co cau hoi hoac muon hop tac? Gui tin nhan cho toi tai day.
+          </p>
+        </div>
+      </Reveal>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div className="space-y-4">
-          <div className="bg-gray-50 rounded-lg p-4">
-            <h3 className="font-semibold mb-1">Email</h3>
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+        <Reveal className="space-y-4" delay={0.06}>
+          <div className="surface-panel p-4">
+            <h3 className="mb-1 text-sm font-semibold text-cyan-200">Email</h3>
             <a
               href="mailto:2212343@dlu.edu.vn"
-              className="text-blue-600 hover:underline text-sm"
+              className="text-sm text-slate-200 hover:text-fuchsia-200"
             >
               2212343@dlu.edu.vn
             </a>
           </div>
-          <div className="bg-gray-50 rounded-lg p-4">
-            <h3 className="font-semibold mb-1">GitHub</h3>
+          <div className="surface-panel p-4">
+            <h3 className="mb-1 text-sm font-semibold text-cyan-200">GitHub</h3>
             <a
               href="https://github.com/GiaBaoK46DLU"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-600 hover:underline text-sm"
+              className="text-sm text-slate-200 hover:text-fuchsia-200"
             >
               github.com/GiaBaoK46DLU
             </a>
           </div>
-          <div className="bg-gray-50 rounded-lg p-4">
-            <h3 className="font-semibold mb-1">Địa chỉ</h3>
-            <p className="text-sm text-gray-600">
+          <div className="surface-panel p-4">
+            <h3 className="mb-1 text-sm font-semibold text-cyan-200">
+              Dia chi
+            </h3>
+            <p className="text-sm text-slate-300/85">
               Đại học Đà Lạt, 01 Phù Đổng Thiên Vương, Đà Lạt
             </p>
           </div>
-        </div>
+        </Reveal>
 
-        <div className="md:col-span-2">
+        <Reveal className="md:col-span-2" delay={0.12}>
           {successMessage ? (
-            <Card>
+            <Card className="border-cyan-300/30 bg-slate-950/60">
               <CardHeader>
-                <CardTitle className="text-green-700">
+                <CardTitle className="text-green-300">
                   Gui thanh cong!
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                <p className="text-green-700 text-sm">{successMessage}</p>
+                <p className="text-sm text-green-200">{successMessage}</p>
                 <Button
                   variant="outline"
+                  className="border-fuchsia-300/40 bg-fuchsia-400/10 text-fuchsia-100"
                   onClick={() => {
                     setSuccessMessage(undefined);
                     setFormKey((prev) => prev + 1);
@@ -164,16 +174,16 @@ export default function ContactPage() {
               </CardContent>
             </Card>
           ) : (
-            <Card>
+            <Card className="border-cyan-300/30 bg-slate-950/60">
               <CardHeader>
-                <CardTitle>Gui lien he</CardTitle>
+                <CardTitle className="text-slate-100">Gui lien he</CardTitle>
               </CardHeader>
               <CardContent>
                 <ContactForm key={formKey} onSuccess={setSuccessMessage} />
               </CardContent>
             </Card>
           )}
-        </div>
+        </Reveal>
       </div>
     </div>
   );

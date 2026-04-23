@@ -5,7 +5,7 @@ import Footer from "../components/footer";
 import { Geist } from "next/font/google";
 import { cn } from "@/lib/utils";
 
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
+const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
   title: "Portfolio — Đinh Lâm Gia Bảo",
@@ -18,9 +18,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="vi" className={cn("font-sans", geist.variable)}>
-      <body className="min-h-screen flex flex-col">
+      <body className="cyber-grid min-h-screen flex flex-col antialiased">
         <Navbar />
-        <main className="flex-1">{children}</main>
+        <main className="flex-1 px-4 py-8 md:px-8">{children}</main>
         <Footer />
       </body>
     </html>
