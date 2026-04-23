@@ -12,7 +12,7 @@ export async function DELETE(_request: NextRequest, { params }: RouteParams) {
 
   if (index === -1) {
     return NextResponse.json(
-      { error: "Khong tim thay loi nhan" },
+      { error: "Không tìm thấy lời nhắn" },
       { status: 404 },
     );
   }
@@ -31,14 +31,14 @@ export async function PUT(request: NextRequest, { params }: RouteParams) {
 
   if (name.length < 2 || name.length > 50) {
     return NextResponse.json(
-      { error: "Ten phai tu 2 den 50 ky tu" },
+      { error: "Tên phải từ 2 đến 50 ký tự" },
       { status: 400 },
     );
   }
 
   if (message.length < 1 || message.length > 500) {
     return NextResponse.json(
-      { error: "Loi nhan phai tu 1 den 500 ky tu" },
+      { error: "Lời nhắn phải từ 1 đến 500 ký tự" },
       { status: 400 },
     );
   }
@@ -46,7 +46,7 @@ export async function PUT(request: NextRequest, { params }: RouteParams) {
   const entry = guestbookEntries.find((item) => item.id === id);
   if (!entry) {
     return NextResponse.json(
-      { error: "Khong tim thay loi nhan" },
+      { error: "Không tìm thấy lời nhắn" },
       { status: 404 },
     );
   }

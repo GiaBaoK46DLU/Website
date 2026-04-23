@@ -5,17 +5,17 @@ import { z } from "zod";
 const contactSchema = z.object({
   name: z
     .string()
-    .min(2, "Ten phai co it nhat 2 ky tu")
-    .max(100, "Ten khong duoc qua 100 ky tu"),
-  email: z.string().email("Email khong hop le"),
+    .min(2, "Tên phải có ít nhất 2 ký tự")
+    .max(100, "Tên không được quá 100 ký tự"),
+  email: z.string().email("Email không hợp lệ"),
   subject: z
     .string()
-    .min(5, "Tieu de phai co it nhat 5 ky tu")
-    .max(200, "Tieu de khong duoc qua 200 ky tu"),
+    .min(5, "Tiêu đề phải có ít nhất 5 ký tự")
+    .max(200, "Tiêu đề không được quá 200 ký tự"),
   message: z
     .string()
-    .min(10, "Noi dung phai co it nhat 10 ky tu")
-    .max(2000, "Noi dung khong duoc qua 2000 ky tu"),
+    .min(10, "Nội dung phải có ít nhất 10 ký tự")
+    .max(2000, "Nội dung không được quá 2000 ký tự"),
 });
 
 export interface ContactFormState {
@@ -49,10 +49,10 @@ export async function sendContactMessage(
     };
   }
 
-  console.log("Tin nhan lien he moi:", result.data);
+  console.log("Tin nhắn liên hệ mới:", result.data);
 
   return {
     success: true,
-    message: "Cam on ban da lien he. Toi se phan hoi som nhat co the.",
+    message: "Cảm ơn bạn đã liên hệ. Tôi sẽ phản hồi sớm nhất có thể.",
   };
 }

@@ -11,27 +11,45 @@ import Reveal from "@/components/ui/reveal";
 const projects = [
   {
     title: "Website Portfolio",
-    description: "Website cá nhân xây dựng bằng Next.JS và Tailwind CSS",
-    tech: ["Next.JS", "Tailwind CSS", "TypeScript"],
+    description:
+      "Website portfolio cá nhân hiện đại với giao diện neon dark và animation mượt",
+    tech: ["Next.js", "TypeScript", "Tailwind CSS"],
     status: "Đang phát triển",
   },
   {
-    title: "Ứng dụng Quản lý Công việc",
-    description: "Ứng dụng Todo App với React và Local Storage",
-    tech: ["React", "CSS Modules", "JavaScript"],
+    title: "eParking quản lý bãi xe thông minh bằng AI",
+    description: "Hệ thống eParking hỗ trợ quản lý bãi xe thông minh bằng AI",
+    tech: ["AI", "Computer Vision", "Web"],
     status: "Hoàn thành",
   },
   {
-    title: "API RESTful",
-    description: "API quản lý sản phẩm với Node.js và Express",
-    tech: ["Node.js", "Express", "MongoDB"],
+    title:
+      "Ứng dụng chỉ đường trong thư viện trường ĐHĐL bằng cách định vị trong nhà",
+    description:
+      "Ứng dụng hỗ trợ chỉ đường trong thư viện bằng công nghệ định vị trong nhà",
+    tech: ["Indoor Positioning", "Mobile App", "Navigation"],
     status: "Hoàn thành",
   },
   {
-    title: "Chat Realtime",
-    description: "Ứng dụng chat realtime với Socket.IO",
-    tech: ["React", "Socket.IO", "Node.js"],
-    status: "Đang phát triển",
+    title: "Ứng dụng theo dõi mã chứng khoán bằng Python",
+    description:
+      "Ứng dụng theo dõi biến động mã chứng khoán và hiển thị dữ liệu trực quan",
+    tech: ["Python", "Data Analysis", "Visualization"],
+    status: "Hoàn thành",
+  },
+  {
+    title: "Ứng dụng desktop quản lý sách",
+    description:
+      "Phần mềm desktop hỗ trợ quản lý sách và nghiệp vụ thư viện cơ bản",
+    tech: ["Desktop App", "Database", "Management System"],
+    status: "Hoàn thành",
+  },
+  {
+    title: "Ứng dụng chẩn đoán bệnh về mắt bằng Java",
+    description:
+      "Ứng dụng hỗ trợ chẩn đoán bệnh về mắt được xây dựng bằng Java",
+    tech: ["Java", "Medical Support", "Rule-based"],
+    status: "Hoàn thành",
   },
 ];
 export default function ProjectsPage() {
@@ -40,10 +58,10 @@ export default function ProjectsPage() {
       <Reveal>
         <div className="surface-panel mb-6 p-6 md:p-8">
           <h1 className="text-3xl font-bold text-slate-100 md:text-4xl">
-            Du an <span className="neon-title">thuc chien</span>
+            Dự án <span className="neon-title">thực chiến</span>
           </h1>
           <p className="mt-2 text-slate-300/80">
-            Mot so san pham tieu bieu toi da va dang phat trien.
+            Một số sản phẩm tiêu biểu tôi đã và đang phát triển.
           </p>
         </div>
       </Reveal>

@@ -41,7 +41,7 @@ export default function GuestbookClientPage() {
     setSubmitting(false);
 
     if (!res.ok) {
-      alert("Khong the gui loi nhan");
+      alert("Không thể gửi lời nhắn");
       return;
     }
 
@@ -56,7 +56,7 @@ export default function GuestbookClientPage() {
     setDeletingId(null);
 
     if (!res.ok) {
-      alert("Khong the xoa loi nhan");
+      alert("Không thể xóa lời nhắn");
       return;
     }
 
@@ -68,17 +68,17 @@ export default function GuestbookClientPage() {
       <Reveal>
         <div className="surface-panel mb-6 p-6 md:p-8">
           <h1 className="text-3xl font-bold text-slate-100 md:text-4xl">
-            Guestbook <span className="neon-title">SWR Live</span>
+            Sổ lưu bút <span className="neon-title">SWR Live</span>
           </h1>
           <p className="mt-2 text-slate-300/80">
-            Phien ban client-side fetch voi useSWR, cap nhat du lieu linh hoat.
+            Phiên bản client-side fetch với useSWR, cập nhật dữ liệu linh hoạt.
           </p>
         </div>
       </Reveal>
 
       <Card className="mb-8 border-cyan-300/25 bg-slate-950/60">
         <CardHeader>
-          <CardTitle className="text-slate-100">Viet loi nhan</CardTitle>
+          <CardTitle className="text-slate-100">Viết lời nhắn</CardTitle>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-3">
@@ -86,14 +86,14 @@ export default function GuestbookClientPage() {
               value={name}
               onChange={(e) => setName(e.target.value)}
               className="w-full rounded-lg border border-cyan-300/30 bg-slate-900/60 px-3 py-2 text-slate-100"
-              placeholder="Ten"
+              placeholder="Tên"
               required
             />
             <textarea
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               className="w-full rounded-lg border border-fuchsia-300/30 bg-slate-900/60 px-3 py-2 text-slate-100"
-              placeholder="Loi nhan"
+              placeholder="Lời nhắn"
               rows={3}
               required
             />
@@ -102,14 +102,16 @@ export default function GuestbookClientPage() {
               disabled={submitting}
               className="border border-cyan-300/45 bg-cyan-300/15 text-cyan-100 hover:bg-cyan-300/25"
             >
-              {submitting ? "Dang gui..." : "Gui loi nhan"}
+              {submitting ? "Đang gửi..." : "Gửi lời nhắn"}
             </Button>
           </form>
         </CardContent>
       </Card>
 
-      {isLoading && <p className="text-slate-400">Dang tai...</p>}
-      {error && <p className="text-red-500">Khong the tai du lieu guestbook</p>}
+      {isLoading && <p className="text-slate-400">Đang tải...</p>}
+      {error && (
+        <p className="text-red-500">Không thể tải dữ liệu sổ lưu bút</p>
+      )}
 
       {!isLoading && !error && (
         <div className="space-y-4">
@@ -133,7 +135,7 @@ export default function GuestbookClientPage() {
                     onClick={() => handleDelete(entry.id)}
                     className="bg-rose-500/20 text-rose-200 hover:bg-rose-500/30"
                   >
-                    {deletingId === entry.id ? "Dang xoa..." : "Xoa"}
+                    {deletingId === entry.id ? "Đang xóa..." : "Xóa"}
                   </Button>
                 </div>
                 <p className="text-slate-300/85">{entry.message}</p>
@@ -150,7 +152,7 @@ export default function GuestbookClientPage() {
                 onClick={() => setPage((p) => Math.max(1, p - 1))}
                 className="border-cyan-300/40 bg-cyan-300/10 text-cyan-100"
               >
-                Trang truoc
+                Trang trước
               </Button>
               <span className="text-xs text-slate-400">
                 Trang {safePage}/{totalPages}

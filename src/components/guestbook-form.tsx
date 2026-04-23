@@ -21,18 +21,18 @@ export default function GuestbookForm() {
   return (
     <Card className="mb-8 border-cyan-300/25 bg-slate-950/60">
       <CardHeader>
-        <CardTitle className="text-slate-100">Viet loi nhan</CardTitle>
+        <CardTitle className="text-slate-100">Viết lời nhắn</CardTitle>
       </CardHeader>
       <CardContent>
         <form action={formAction} className="space-y-4">
           <div className="space-y-2">
             <Label htmlFor="name" className="text-slate-200">
-              Ten cua ban
+              Tên của bạn
             </Label>
             <Input
               id="name"
               name="name"
-              placeholder="Nhap ten cua ban"
+              placeholder="Nhập tên của bạn"
               required
               className="border-cyan-300/30 bg-slate-900/60 text-slate-100"
             />
@@ -43,12 +43,12 @@ export default function GuestbookForm() {
 
           <div className="space-y-2">
             <Label htmlFor="message" className="text-slate-200">
-              Loi nhan
+              Lời nhắn
             </Label>
             <Textarea
               id="message"
               name="message"
-              placeholder="Viet loi nhan cua ban..."
+              placeholder="Viết lời nhắn của bạn..."
               required
               rows={3}
               className="border-fuchsia-300/30 bg-slate-900/60 text-slate-100"
@@ -60,8 +60,8 @@ export default function GuestbookForm() {
 
           <SubmitButton
             className="border border-cyan-300/45 bg-cyan-300/15 text-cyan-100 hover:bg-cyan-300/25"
-            idleText="Gui loi nhan"
-            pendingText="Dang gui..."
+            idleText="Gửi lời nhắn"
+            pendingText="Đang gửi..."
           />
 
           {state.errors?.general && (
@@ -69,7 +69,7 @@ export default function GuestbookForm() {
           )}
 
           {state.success && (
-            <p className="text-green-300 text-sm">Gui loi nhan thanh cong!</p>
+            <p className="text-green-300 text-sm">Gửi lời nhắn thành công!</p>
           )}
         </form>
       </CardContent>

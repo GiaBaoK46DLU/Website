@@ -10,17 +10,17 @@ export default function HomePage() {
           <div className="pointer-events-none absolute -bottom-24 left-16 h-64 w-64 rounded-full bg-cyan-300/20 blur-3xl" />
 
           <p className="mb-4 text-xs font-semibold tracking-[0.24em] text-cyan-200/85">
-            FRONTEND DEVELOPER // ANIME CYBER INTERFACE
+            LẬP TRÌNH FRONTEND // GIAO DIỆN ANIME CYBER
           </p>
 
           <h1 className="text-balance text-4xl font-bold leading-tight md:text-6xl">
-            Xin chao, toi la{" "}
-            <span className="neon-title">Dinh Lam Gia Bao</span>
+            Xin chào, tôi là{" "}
+            <span className="neon-title">Đinh Lâm Gia Bảo</span>
           </h1>
 
           <p className="mt-6 max-w-2xl text-base text-slate-300/85 md:text-lg">
-            Xay dung website hien dai voi Next.js, toi uu trai nghiem nguoi dung
-            va tao ra giao dien mang chat rieng: gon, muot, de scan.
+            Xây dựng website hiện đại với Next.js, tối ưu trải nghiệm người dùng
+            và tạo ra giao diện mang chất riêng: gọn, mượt, dễ quan sát.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">
@@ -28,13 +28,13 @@ export default function HomePage() {
               href="/projects"
               className="neon-button bg-cyan-300/90 text-slate-950"
             >
-              Xem du an
+              Xem dự án
             </Link>
             <Link
               href="/contact"
               className="neon-button border border-fuchsia-300/50 bg-fuchsia-300/10 text-fuchsia-100"
             >
-              Lien he ngay
+              Liên hệ ngay
             </Link>
           </div>
         </section>
@@ -44,13 +44,13 @@ export default function HomePage() {
         <section className="surface-panel p-6 md:p-8">
           <div className="mb-5 flex items-center justify-between">
             <h2 className="text-2xl font-semibold text-slate-100">
-              Skill Matrix
+              Ma trận kỹ năng
             </h2>
             <Link
               href="/skills"
               className="text-sm text-cyan-200 hover:text-fuchsia-200"
             >
-              Xem chi tiet
+              Xem chi tiết
             </Link>
           </div>
 
@@ -80,17 +80,17 @@ export default function HomePage() {
       <Reveal delay={0.2}>
         <section className="surface-panel p-6 text-center md:p-8">
           <h2 className="text-2xl font-semibold text-slate-100">
-            Blog Engineering Notes
+            Ghi chú kỹ thuật blog
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-slate-300/80">
-            Chia se kinh nghiem hoc tap, ky thuat frontend va cach toi xay dung
-            giao dien dep ma van de maintain.
+            Chia sẻ kinh nghiệm học tập, kỹ thuật frontend và cách tôi xây dựng
+            giao diện đẹp mà vẫn dễ bảo trì.
           </p>
           <Link
             href="/blog"
             className="mt-5 inline-block text-sm font-semibold text-cyan-200 hover:text-fuchsia-200"
           >
-            Kham pha bai viet {"->"}
+            Khám phá bài viết {"->"}
           </Link>
         </section>
       </Reveal>

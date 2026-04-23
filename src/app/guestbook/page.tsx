@@ -29,10 +29,10 @@ export default async function GuestbookPage({
       <Reveal>
         <div className="surface-panel mb-6 p-6 md:p-8">
           <h1 className="text-3xl font-bold text-slate-100 md:text-4xl">
-            Guestbook <span className="neon-title">Signal</span>
+            Sổ lưu bút <span className="neon-title">Signal</span>
           </h1>
           <p className="mt-2 text-slate-300/80">
-            Hay de lai loi nhan cho toi nhe.
+            Hãy để lại lời nhắn cho tôi nhé.
           </p>
         </div>
       </Reveal>
@@ -42,7 +42,7 @@ export default async function GuestbookPage({
       <Separator className="my-8 bg-cyan-300/20" />
 
       <div className="space-y-4">
-        <p className="text-sm text-slate-400">{entries.length} loi nhan</p>
+        <p className="text-sm text-slate-400">{entries.length} lời nhắn</p>
 
         {paginatedEntries.map((entry) => (
           <Card
@@ -75,7 +75,7 @@ export default async function GuestbookPage({
 
         {entries.length === 0 && (
           <p className="py-8 text-center text-slate-400">
-            Chua co loi nhan nao. Hay la nguoi dau tien!
+            Chưa có lời nhắn nào. Hãy là người đầu tiên!
           </p>
         )}
 
@@ -85,7 +85,7 @@ export default async function GuestbookPage({
               href={`/guestbook?page=${Math.max(1, safePage - 1)}`}
               className={`text-sm ${safePage === 1 ? "pointer-events-none opacity-40" : "text-cyan-200 hover:text-cyan-100 hover:underline"}`}
             >
-              Trang truoc
+              Trang trước
             </Link>
             <span className="text-xs text-slate-400">
               Trang {safePage}/{totalPages}

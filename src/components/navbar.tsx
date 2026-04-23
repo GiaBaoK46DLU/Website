@@ -36,7 +36,7 @@ export default function Navbar() {
             className="rounded-lg border border-fuchsia-400/40 px-3 py-1.5 text-sm text-cyan-200 md:hidden"
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
-            aria-label="Mo menu dieu huong"
+            aria-label="Mở menu điều hướng"
           >
             Menu
           </button>

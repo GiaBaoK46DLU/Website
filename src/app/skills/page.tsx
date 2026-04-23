@@ -2,11 +2,11 @@ import Reveal from "@/components/ui/reveal";
 
 const skillGroups = [
   {
-    title: "Frontend",
+    title: "Phát triển giao diện",
     items: ["HTML5", "CSS3", "JavaScript", "TypeScript", "React", "Next.js"],
   },
   {
-    title: "UI Engineering",
+    title: "Kỹ thuật UI",
     items: [
       "Tailwind CSS",
       "Responsive Design",
@@ -15,11 +15,11 @@ const skillGroups = [
     ],
   },
   {
-    title: "Backend Basics",
+    title: "Nền tảng backend",
     items: ["Node.js", "REST API", "SQL", "PostgreSQL"],
   },
   {
-    title: "Workflow",
+    title: "Quy trình làm việc",
     items: ["Git", "GitHub", "Deployment", "Code Review"],
   },
 ];
@@ -30,10 +30,10 @@ export default function SkillsPage() {
       <Reveal>
         <section className="surface-panel p-6 md:p-8">
           <h1 className="text-3xl font-bold text-slate-100 md:text-4xl">
-            Skill <span className="neon-title">Constellation</span>
+            Hệ <span className="neon-title">kỹ năng</span>
           </h1>
           <p className="mt-2 text-slate-300/80">
-            Tap hop ky nang theo nhom de de scan nhanh khi recruiter xem
+            Tập hợp các kỹ năng theo nhóm để dễ dàng quét nhanh khi xem
             portfolio.
           </p>
         </section>

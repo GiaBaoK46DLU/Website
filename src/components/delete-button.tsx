@@ -28,14 +28,14 @@ export default function DeleteButton({ id }: { id: string }) {
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <button className="text-xs text-red-400 hover:text-red-600 transition-colors">
-          Xoa
+          Xóa
         </button>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Xac nhan xoa loi nhan</DialogTitle>
+          <DialogTitle>Xác nhận xóa lời nhắn</DialogTitle>
           <DialogDescription>
-            Hanh dong nay khong the hoan tac. Ban co chac muon xoa loi nhan nay?
+            Hành động này không thể hoàn tác. Bạn có chắc muốn xóa lời nhắn này?
           </DialogDescription>
         </DialogHeader>
         <DialogFooter>
@@ -44,14 +44,14 @@ export default function DeleteButton({ id }: { id: string }) {
             onClick={() => setOpen(false)}
             disabled={deleting}
           >
-            Huy
+            Hủy
           </Button>
           <Button
             variant="destructive"
             onClick={handleDelete}
             disabled={deleting}
           >
-            {deleting ? "Dang xoa..." : "Xoa"}
+            {deleting ? "Đang xóa..." : "Xóa"}
           </Button>
         </DialogFooter>
       </DialogContent>

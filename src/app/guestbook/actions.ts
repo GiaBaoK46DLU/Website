@@ -7,12 +7,12 @@ import { guestbookEntries } from "@/data/guestbook";
 const guestbookSchema = z.object({
   name: z
     .string()
-    .min(2, "Ten phai co it nhat 2 ky tu")
-    .max(50, "Ten khong duoc qua 50 ky tu"),
+    .min(2, "Tên phải có ít nhất 2 ký tự")
+    .max(50, "Tên không được quá 50 ký tự"),
   message: z
     .string()
-    .min(1, "Loi nhan khong duoc de trong")
-    .max(500, "Loi nhan khong duoc qua 500 ky tu"),
+    .min(1, "Lời nhắn không được để trống")
+    .max(500, "Lời nhắn không được quá 500 ký tự"),
 });
 
 export interface ActionState {
@@ -58,7 +58,7 @@ export async function createGuestbookEntry(
     return {
       success: false,
       errors: {
-        general: ["Khong the gui trung loi nhan trong vong 1 phut"],
+        general: ["Không thể gửi trùng lời nhắn trong vòng 1 phút"],
       },
     };
   }
@@ -82,7 +82,7 @@ export async function deleteGuestbookEntry(id: string): Promise<ActionState> {
   if (index === -1) {
     return {
       success: false,
-      errors: { message: ["Khong tim thay loi nhan"] },
+      errors: { message: ["Không tìm thấy lời nhắn"] },
     };
   }
 

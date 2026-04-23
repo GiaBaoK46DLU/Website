@@ -10,20 +10,20 @@ export default function BlogLayout({
         <aside className="hidden lg:block">
           <div className="surface-panel sticky top-24 p-4">
             <h3 className="mb-3 text-sm font-semibold tracking-wide text-cyan-200">
-              Danh muc
+              Danh mục
             </h3>
             <ul className="space-y-2 text-sm text-slate-300/85">
               <li className="cursor-pointer rounded-md px-2 py-1 hover:bg-fuchsia-400/10 hover:text-fuchsia-100">
-                Cong nghe
+                Công nghệ
               </li>
               <li className="cursor-pointer rounded-md px-2 py-1 hover:bg-fuchsia-400/10 hover:text-fuchsia-100">
-                Hoc tap
+                Học tập
               </li>
               <li className="cursor-pointer rounded-md px-2 py-1 hover:bg-fuchsia-400/10 hover:text-fuchsia-100">
-                Du an ca nhan
+                Dự án cá nhân
               </li>
               <li className="cursor-pointer rounded-md px-2 py-1 hover:bg-fuchsia-400/10 hover:text-fuchsia-100">
-                Cuoc song
+                Cuộc sống
               </li>
             </ul>
           </div>

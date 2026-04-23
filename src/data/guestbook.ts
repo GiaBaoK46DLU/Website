@@ -8,20 +8,20 @@ export interface GuestbookEntry {
 export const guestbookEntries: GuestbookEntry[] = [
   {
     id: "1",
-    name: "Nguyen Van B",
-    message: "Website dep qua! Chuc ban thanh cong nhe!",
+    name: "Nguyễn Văn B",
+    message: "Website đẹp quá! Chúc bạn thành công nhé!",
     createdAt: new Date("2025-03-01").toISOString(),
   },
   {
     id: "2",
-    name: "Tran Thi C",
-    message: "Rat an tuong voi portfolio cua ban. Keep going!",
+    name: "Trần Thị C",
+    message: "Rất ấn tượng với portfolio của bạn. Cố lên nhé!",
     createdAt: new Date("2025-03-05").toISOString(),
   },
   {
     id: "3",
-    name: "Le Van D",
-    message: "Minh cung dang hoc Next.js, mong duoc giao luu!",
+    name: "Lê Văn D",
+    message: "Mình cũng đang học Next.js, mong được giao lưu!",
     createdAt: new Date("2025-03-10").toISOString(),
   },
 ];

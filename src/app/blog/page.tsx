@@ -56,7 +56,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
               size="sm"
               className="border-cyan-300/40 bg-cyan-300/10 text-cyan-100 hover:bg-cyan-300/20"
             >
-              Dung revalidate
+              Dùng revalidate
             </Button>
           </Link>
           <Link href="/blog?strategy=no-store">
@@ -65,7 +65,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
               size="sm"
               className="border-fuchsia-300/40 bg-fuchsia-300/10 text-fuchsia-100 hover:bg-fuchsia-300/20"
             >
-              Dung no-store
+              Dùng no-store
             </Button>
           </Link>
         </div>
@@ -81,9 +81,9 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                     variant="secondary"
                     className="bg-cyan-300/15 text-cyan-100"
                   >
-                    Tac gia #{post.userId}
+                    Tác giả #{post.userId}
                   </Badge>
-                  <span className="text-sm text-slate-400">Bai #{post.id}</span>
+                  <span className="text-sm text-slate-400">Bài #{post.id}</span>
                 </div>
                 <CardTitle className="capitalize text-slate-100">
                   {post.title}

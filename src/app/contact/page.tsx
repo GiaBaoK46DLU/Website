@@ -31,13 +31,13 @@ function ContactForm({
     <form action={formAction} className="space-y-4">
       <div>
         <Label htmlFor="name" className="mb-1 text-slate-200">
-          Ho va ten
+          Họ và tên
         </Label>
         <Input
           id="name"
           name="name"
           type="text"
-          placeholder="Nguyen Van A"
+          placeholder="Nguyễn Văn A"
           required
         />
         {state.errors?.name && (
@@ -63,13 +63,13 @@ function ContactForm({
 
       <div>
         <Label htmlFor="subject" className="mb-1 text-slate-200">
-          Tieu de
+          Tiêu đề
         </Label>
         <Input
           id="subject"
           name="subject"
           type="text"
-          placeholder="Chu de ban muon trao doi"
+          placeholder="Chủ đề bạn muốn trao đổi"
           required
         />
         {state.errors?.subject && (
@@ -79,12 +79,12 @@ function ContactForm({
 
       <div>
         <Label htmlFor="message" className="mb-1 text-slate-200">
-          Noi dung
+          Nội dung
         </Label>
         <Textarea
           id="message"
           name="message"
-          placeholder="Viet noi dung tin nhan..."
+          placeholder="Viết nội dung tin nhắn..."
           required
           rows={5}
         />
@@ -95,8 +95,8 @@ function ContactForm({
 
       <SubmitButton
         className="w-full"
-        idleText="Gui tin nhan"
-        pendingText="Dang gui..."
+        idleText="Gửi tin nhắn"
+        pendingText="Đang gửi..."
       />
     </form>
   );
@@ -111,10 +111,10 @@ export default function ContactPage() {
       <Reveal>
         <div className="surface-panel mb-6 p-6 md:p-8">
           <h1 className="text-3xl font-bold text-slate-100 md:text-4xl">
-            Contact <span className="neon-title">Channel</span>
+            Kênh <span className="neon-title">liên hệ</span>
           </h1>
           <p className="mt-2 text-slate-300/80">
-            Ban co cau hoi hoac muon hop tac? Gui tin nhan cho toi tai day.
+            Bạn có câu hỏi hoặc muốn hợp tác? Gửi tin nhắn cho tôi tại đây.
           </p>
         </div>
       </Reveal>
@@ -143,7 +143,7 @@ export default function ContactPage() {
           </div>
           <div className="surface-panel p-4">
             <h3 className="mb-1 text-sm font-semibold text-cyan-200">
-              Dia chi
+              Địa chỉ
             </h3>
             <p className="text-sm text-slate-300/85">
               Đại học Đà Lạt, 01 Phù Đổng Thiên Vương, Đà Lạt
@@ -156,7 +156,7 @@ export default function ContactPage() {
             <Card className="border-cyan-300/30 bg-slate-950/60">
               <CardHeader>
                 <CardTitle className="text-green-300">
-                  Gui thanh cong!
+                  Gửi thành công!
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
@@ -169,14 +169,14 @@ export default function ContactPage() {
                     setFormKey((prev) => prev + 1);
                   }}
                 >
-                  Gui tin nhan khac
+                  Gửi tin nhắn khác
                 </Button>
               </CardContent>
             </Card>
           ) : (
             <Card className="border-cyan-300/30 bg-slate-950/60">
               <CardHeader>
-                <CardTitle className="text-slate-100">Gui lien he</CardTitle>
+                <CardTitle className="text-slate-100">Gửi liên hệ</CardTitle>
               </CardHeader>
               <CardContent>
                 <ContactForm key={formKey} onSuccess={setSuccessMessage} />

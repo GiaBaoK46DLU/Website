@@ -24,7 +24,7 @@ async function getComments(postId: string): Promise<Comment[]> {
   );
 
   if (!res.ok) {
-    throw new Error("Khong the tai binh luan bai viet");
+    throw new Error("Không thể tải bình luận bài viết");
   }
 
   return res.json();
@@ -36,7 +36,7 @@ async function getUser(userId: number): Promise<User> {
   );
 
   if (!res.ok) {
-    throw new Error("Khong the tai thong tin tac gia");
+    throw new Error("Không thể tải thông tin tác giả");
   }
 
   return res.json();
@@ -45,7 +45,7 @@ async function getUser(userId: number): Promise<User> {
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { id } = await params;
 
-  // Chay song song request bai viet va comments de giam thoi gian cho.
+  // Chạy song song request bài viết và comments để giảm thời gian chờ.
   const [post, comments] = await Promise.all([getPost(id), getComments(id)]);
   const author = await getUser(post.userId);
 
@@ -55,7 +55,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         href="/blog"
         className="inline-block rounded-md px-2 py-1 text-sm text-cyan-200 hover:bg-cyan-300/10 hover:text-cyan-100"
       >
-        {"<-"} Quay lai danh sach
+        {"<-"} Quay lại danh sách
       </Link>
 
       <article className="surface-panel p-6 md:p-8">
@@ -65,7 +65,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
         <div className="mb-6 flex flex-wrap items-center gap-3 text-sm text-slate-300/85">
           <span>
-            Tac gia: <strong className="text-cyan-100">{author.name}</strong>
+            Tác giả: <strong className="text-cyan-100">{author.name}</strong>
           </span>
           <span>•</span>
           <span>{author.email}</span>
@@ -76,7 +76,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         </div>
 
         <div className="rounded-xl border border-fuchsia-300/25 bg-slate-950/55 p-4">
-          <h3 className="mb-2 font-semibold text-fuchsia-200">Ve tac gia</h3>
+          <h3 className="mb-2 font-semibold text-fuchsia-200">Về tác giả</h3>
           <p className="text-sm text-slate-300/85">
             <strong>{author.name}</strong> (@{author.username}) —{" "}
             {author.company.name}
@@ -86,7 +86,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
         <div className="mt-8 border-t border-cyan-300/15 pt-6">
           <h3 className="mb-4 font-semibold text-cyan-100">
-            Binh luan ({comments.length})
+            Bình luận ({comments.length})
           </h3>
           <div className="space-y-3">
             {comments.slice(0, 5).map((comment) => (
