@@ -30,3 +30,38 @@ Trong dự án này, các công việc sau đã được thực hiện:
    ```bash
    cd my-first-nextjs
    ```
+
+## Lab 4 - Supabase (khong doi giao dien)
+
+Project da duoc tich hop Supabase o tang du lieu cho Guestbook, khong thay doi UI hien tai.
+
+### 1) Cai dat dependency
+
+```bash
+npm install
+```
+
+### 2) Tao bien moi truong
+
+```bash
+cp .env.local.example .env.local
+```
+
+Cap nhat gia tri that trong `.env.local`:
+
+- `NEXT_PUBLIC_SUPABASE_URL`
+- `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+
+### 3) Tao bang va RLS tren Supabase
+
+Mo Supabase SQL Editor va chay file:
+
+- `supabase/lab4_guestbook.sql`
+
+### 4) Chay project
+
+```bash
+npm run dev
+```
+
+Neu chua co bien moi truong Supabase, app van chay bang du lieu fallback trong bo nho (de dev local).

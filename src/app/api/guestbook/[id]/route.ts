@@ -1,5 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
-import { guestbookEntries } from "@/data/guestbook";
+import {
+  deleteGuestbookEntryData,
+  GuestbookNotFoundError,
+  updateGuestbookEntryData,
+} from "@/lib/guestbook-repository";
 
 interface RouteParams {
   params: Promise<{ id: string }>;
@@ -8,18 +12,22 @@ interface RouteParams {
 export async function DELETE(_request: NextRequest, { params }: RouteParams) {
   const { id } = await params;
 
-  const index = guestbookEntries.findIndex((entry) => entry.id === id);
+  try {
+    const deleted = await deleteGuestbookEntryData(id);
+    return NextResponse.json(deleted);
+  } catch (error) {
+    if (error instanceof GuestbookNotFoundError) {
+      return NextResponse.json(
+        { error: "Không tìm thấy lời nhắn" },
+        { status: 404 },
+      );
+    }
 
-  if (index === -1) {
     return NextResponse.json(
-      { error: "Không tìm thấy lời nhắn" },
-      { status: 404 },
+      { error: "Không thể xóa lời nhắn" },
+      { status: 500 },
     );
   }
-
-  const deleted = guestbookEntries.splice(index, 1)[0];
-
-  return NextResponse.json(deleted);
 }
 
 export async function PUT(request: NextRequest, { params }: RouteParams) {
@@ -43,16 +51,20 @@ export async function PUT(request: NextRequest, { params }: RouteParams) {
     );
   }
 
-  const entry = guestbookEntries.find((item) => item.id === id);
-  if (!entry) {
+  try {
+    const entry = await updateGuestbookEntryData(id, { name, message });
+    return NextResponse.json(entry);
+  } catch (error) {
+    if (error instanceof GuestbookNotFoundError) {
+      return NextResponse.json(
+        { error: "Không tìm thấy lời nhắn" },
+        { status: 404 },
+      );
+    }
+
     return NextResponse.json(
-      { error: "Không tìm thấy lời nhắn" },
-      { status: 404 },
+      { error: "Không thể cập nhật lời nhắn" },
+      { status: 500 },
     );
   }
-
-  entry.name = name;
-  entry.message = message;
-
-  return NextResponse.json(entry);
 }

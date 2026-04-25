@@ -1,4 +1,4 @@
-import { guestbookEntries } from "@/data/guestbook";
+import { listGuestbookEntries } from "@/lib/guestbook-repository";
 import GuestbookForm from "@/components/guestbook-form";
 import DeleteButton from "@/components/delete-button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -17,7 +17,7 @@ export default async function GuestbookPage({
   searchParams,
 }: GuestbookPageProps) {
   const params = await searchParams;
-  const entries = guestbookEntries;
+  const entries = await listGuestbookEntries();
   const currentPage = Math.max(1, Number(params.page ?? "1") || 1);
   const totalPages = Math.max(1, Math.ceil(entries.length / PAGE_SIZE));
   const safePage = Math.min(currentPage, totalPages);

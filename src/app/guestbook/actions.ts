@@ -2,7 +2,12 @@
 
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
-import { guestbookEntries } from "@/data/guestbook";
+import {
+  createGuestbookEntryData,
+  deleteGuestbookEntryData,
+  findRecentDuplicateGuestbookEntry,
+  GuestbookNotFoundError,
+} from "@/lib/guestbook-repository";
 
 const guestbookSchema = z.object({
   name: z
@@ -42,16 +47,10 @@ export async function createGuestbookEntry(
     };
   }
 
-  const now = Date.now();
-  const duplicate = guestbookEntries.find((entry) => {
-    const sameName =
-      entry.name.trim().toLowerCase() === result.data.name.trim().toLowerCase();
-    const sameMessage =
-      entry.message.trim().toLowerCase() ===
-      result.data.message.trim().toLowerCase();
-    const withinOneMinute = now - new Date(entry.createdAt).getTime() < 60_000;
-
-    return sameName && sameMessage && withinOneMinute;
+  const duplicate = await findRecentDuplicateGuestbookEntry({
+    name: result.data.name,
+    message: result.data.message,
+    withinMs: 60_000,
   });
 
   if (duplicate) {
@@ -63,31 +62,39 @@ export async function createGuestbookEntry(
     };
   }
 
-  const newEntry = {
-    id: Date.now().toString(),
-    name: result.data.name,
-    message: result.data.message,
-    createdAt: new Date().toISOString(),
-  };
-
-  guestbookEntries.unshift(newEntry);
-  revalidatePath("/guestbook");
-
-  return { success: true };
+  try {
+    await createGuestbookEntryData({
+      name: result.data.name,
+      message: result.data.message,
+    });
+    revalidatePath("/guestbook");
+    return { success: true };
+  } catch {
+    return {
+      success: false,
+      errors: {
+        general: ["Không thể lưu lời nhắn. Vui lòng thử lại."],
+      },
+    };
+  }
 }
 
 export async function deleteGuestbookEntry(id: string): Promise<ActionState> {
-  const index = guestbookEntries.findIndex((entry) => entry.id === id);
+  try {
+    await deleteGuestbookEntryData(id);
+    revalidatePath("/guestbook");
+    return { success: true };
+  } catch (error) {
+    if (error instanceof GuestbookNotFoundError) {
+      return {
+        success: false,
+        errors: { message: ["Không tìm thấy lời nhắn"] },
+      };
+    }
 
-  if (index === -1) {
     return {
       success: false,
-      errors: { message: ["Không tìm thấy lời nhắn"] },
+      errors: { general: ["Không thể xóa lời nhắn. Vui lòng thử lại."] },
     };
   }
-
-  guestbookEntries.splice(index, 1);
-  revalidatePath("/guestbook");
-
-  return { success: true };
 }

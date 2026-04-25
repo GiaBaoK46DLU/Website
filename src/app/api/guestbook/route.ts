@@ -1,12 +1,18 @@
 import { NextRequest, NextResponse } from "next/server";
-import { guestbookEntries } from "@/data/guestbook";
+import {
+  createGuestbookEntryData,
+  GuestbookNotFoundError,
+  listGuestbookEntries,
+  updateGuestbookEntryData,
+} from "@/lib/guestbook-repository";
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const limitParam = searchParams.get("limit");
 
   if (!limitParam) {
-    return NextResponse.json(guestbookEntries);
+    const entries = await listGuestbookEntries();
+    return NextResponse.json(entries);
   }
 
   const limit = Number(limitParam);
@@ -17,7 +23,8 @@ export async function GET(request: NextRequest) {
     );
   }
 
-  return NextResponse.json(guestbookEntries.slice(0, limit));
+  const entries = await listGuestbookEntries(limit);
+  return NextResponse.json(entries);
 }
 
 export async function POST(request: NextRequest) {
@@ -40,16 +47,15 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  const newEntry = {
-    id: Date.now().toString(),
-    name,
-    message,
-    createdAt: new Date().toISOString(),
-  };
-
-  guestbookEntries.unshift(newEntry);
-
-  return NextResponse.json(newEntry, { status: 201 });
+  try {
+    const newEntry = await createGuestbookEntryData({ name, message });
+    return NextResponse.json(newEntry, { status: 201 });
+  } catch {
+    return NextResponse.json(
+      { error: "Không thể tạo lời nhắn" },
+      { status: 500 },
+    );
+  }
 }
 
 export async function PUT(request: NextRequest) {
@@ -75,16 +81,20 @@ export async function PUT(request: NextRequest) {
     );
   }
 
-  const entry = guestbookEntries.find((item) => item.id === id);
-  if (!entry) {
+  try {
+    const entry = await updateGuestbookEntryData(id, { name, message });
+    return NextResponse.json(entry);
+  } catch (error) {
+    if (error instanceof GuestbookNotFoundError) {
+      return NextResponse.json(
+        { error: "Không tìm thấy lời nhắn" },
+        { status: 404 },
+      );
+    }
+
     return NextResponse.json(
-      { error: "Không tìm thấy lời nhắn" },
-      { status: 404 },
+      { error: "Không thể cập nhật lời nhắn" },
+      { status: 500 },
     );
   }
-
-  entry.name = name;
-  entry.message = message;
-
-  return NextResponse.json(entry);
 }
